@@ -4,27 +4,74 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        h6 {
+          font-size: 16px
+        }
         .h2-text {color : red}
+        .h6-text {color :yellow}
+        #h1-text {
+           font-size: 50px
+          }
+        div.python > a {
+          color: green
+        }
+        ul li {
+            color: blue
+        }
+        input[type="text"] {
+            background-color: yellow
+        }
+        a:hover {
+            color: green
+        }
+        input[type="text"]:hover {
+            background-color: green
+        }
+        li::marker {
+            color: red
+        }
+        ul > li:nth-child(2) {
+            color: green
+        }
+        ul li:nth-child(odd) {
+            color: pink
+        }
+        h1:nth-child(1) {
+    color: green;
+}
+
+ div:nth-child(2) > h1{
+    color: orange;
+}
+
+ div:nth-child(3) > h1 {
+    color: red;
+}
+
+
     </style>
 </head>
 <body>
-<div>
+<div class="python">
     <h1 id="h1-text">h1 text</h1>
     <h2 class="h2-text">h2 text</h2>
-    <h6 class="h2-text">h6 text</h6>
-    <p>Native mobile emulation of Google Chrome for Android and <span style="color: green">Mobile Safari</span>. The same rendering engine works on your
+    <h6 class="h2-text h6-text">h6 text</h6>
+    <p>Native mobile emulation of Google Chrome for Android and <span style="color: green">Mobile Safari</span>. The
+        same rendering engine works on your
         Desktop and in the Cloud.</p>
     <a href="https://playwright.dev/python/" target="_blank">Python</a>
     <img alt="browsers.png" src="https://playwright.dev/python/img/logos/Browsers.png" style="width: 250px">
     <ul>
-        <li>Item1</li>
+        <li>Item 1</li>
         <li>Item 2</li>
         <li>Item 3</li>
+        <li>Item 4</li>
     </ul>
     <ol>
-        <li>Item1</li>
+        <li>Item 1</li>
         <li>Item 2</li>
         <li>Item 3</li>
+        <li>Item 4</li>
     </ol>
     <form action="/action" method="POST">
         <input type="text" value="12345" placeholder="Введите текст">
@@ -33,6 +80,8 @@
         <textarea required placeholder="Text">12345</textarea>
         <button type="submit">Tekst</button>
     </form>
+
+    <h1 id="h1-text">h1 text</h1>
     <table>
         <thead>
         <tr>
@@ -50,6 +99,34 @@
 
         </tbody>
     </table>
+    <div class="nth">
+        <p>1</p>
+        <p>2</p>
+        <h6>3</h6>
+        <h4>4</h4>
+        <p>5</p>
+    </div>
+
+</div>
+<div class="java-script">
+
+    <h2 class="h2-text">h2 text</h2>
+    <a href="https://playwright.dev/python/" target="_blank">JavaScript</a>
+</div>
+<div>
+    <a href="https://playwright.dev/python/">Java</a>
+</div>
+
+<div>
+    <div>
+        <h1>Hello!</h1>
+    </div>
+    <div>
+        <h1>Hello!</h1>
+    </div>
+    <div>
+        <h1>Hello!</h1>
+    </div>
 </div>
 
 
