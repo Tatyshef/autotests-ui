@@ -28,3 +28,4 @@ with sync_playwright() as playwright:
     #Пауза на 5 секунд, чтобы увидеть результат
     page.wait_for_timeout(5000)
 
+
