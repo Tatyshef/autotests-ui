@@ -1,6 +1,9 @@
+import pytest
 from playwright.sync_api import sync_playwright, expect
 
 
+@pytest.mark.courses
+@pytest.mark.regression
 def test_empty_courses_list():
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)
@@ -23,7 +26,6 @@ def test_empty_courses_list():
 
         context.storage_state(path='browser-state.json')
 
-        page.wait_for_timeout(5000)
 
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)

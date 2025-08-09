@@ -21,7 +21,6 @@ with sync_playwright() as playwright:
 
     context.storage_state(path='browser-state.json')
 
-    page.wait_for_timeout(5000)
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
@@ -45,4 +44,3 @@ with sync_playwright() as playwright:
     expect(empty_view_description).to_be_visible()
     expect(empty_view_description).to_have_text('Results from the load test pipeline will be displayed here')
 
-    page.wait_for_timeout(5000)
