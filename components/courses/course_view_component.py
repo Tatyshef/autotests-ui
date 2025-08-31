@@ -4,7 +4,7 @@ from components.courses.course_view_menu_component import CourseViewMenuComponen
 
 
 class CourseViewComponent(BaseComponent):
-    def __init__(self, page: Page):
+    def  __init__(self, page: Page):
         super().__init__(page)
 
         self.menu = CourseViewMenuComponent(page)
@@ -15,6 +15,7 @@ class CourseViewComponent(BaseComponent):
         self.min_score_text = page.get_by_test_id('course-min-score-info-row-view-text')
         self.estimated_time_text = page.get_by_test_id('course-estimated-time-info-row-view-text')
 
+        self.title.f
     def check_visible(self, index: int, title: str, max_score: str, min_score: str, estimated_time: str):
         expect(self.image.nth(index)).to_be_visible()
 
@@ -31,5 +32,3 @@ class CourseViewComponent(BaseComponent):
         expect(self.estimated_time_text.nth(index)).to_have_text(
             f"Estimated time: {estimated_time}"
         )
-
-
