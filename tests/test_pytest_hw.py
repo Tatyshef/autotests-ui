@@ -1,4 +1,6 @@
+#можно будет удалить файл ( в курсе нет)
 import pytest
+
 
 
 @pytest.mark.slow
