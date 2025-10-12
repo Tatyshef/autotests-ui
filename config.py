@@ -1,7 +1,8 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
 from enum import Enum
-from pydantic import EmailStr, FilePath, HttpUrl, DirectoryPath, BaseModel
 from typing import Self
+
+from pydantic import EmailStr, FilePath, HttpUrl, DirectoryPath
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Browser(str, Enum):
@@ -10,13 +11,17 @@ class Browser(str, Enum):
     CHROMIUM = "chromium"
 
 
-class TestUser(BaseModel):
+class TestUser(BaseSettings):
+    model_config = SettingsConfigDict(env_prefix="TEST_USER")
+
     email: EmailStr
     username: str
     password: str
 
 
-class TestData(BaseModel):
+class TestData(BaseSettings):
+    model_config = SettingsConfigDict(env_prefix="TEST_DATA")
+
     image_png_file: FilePath
 
 
@@ -24,7 +29,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        env_nested_delimiter="."
+        env_nested_delimiter=".",
     )
 
     app_url: HttpUrl
@@ -36,21 +41,19 @@ class Settings(BaseSettings):
     tracing_dir: DirectoryPath
     browser_state_file: FilePath
 
-    # Добавили метод initialize
+    def get_base_url(self) -> str:
+        return f"{self.app_url}/"
+
     @classmethod
-    def initialize(cls) -> Self:  # Возвращает экземпляр класса Settings
-        # Указываем пути
+    def initialize(cls) -> Self:
         videos_dir = DirectoryPath("./videos")
         tracing_dir = DirectoryPath("./tracing")
         browser_state_file = FilePath("browser-state.json")
 
-        # Создаем директории, если они не существуют
-        videos_dir.mkdir(exist_ok=True)  # Если директория сyществует, то игнорируем ошибку
+        videos_dir.mkdir(exist_ok=True)
         tracing_dir.mkdir(exist_ok=True)
-        # Создаем файл состояния браузера, если его нет
-        browser_state_file.touch(exist_ok=True)  # Если файл сyществует, то игнорируем ошибку
+        browser_state_file.touch(exist_ok=True)
 
-        # Возвращаем модель с инициализированными значениями
         return Settings(
             videos_dir=videos_dir,
             tracing_dir=tracing_dir,
@@ -58,4 +61,4 @@ class Settings(BaseSettings):
         )
 
 
-settings=Settings.initialize()
+settings = Settings.initialize()
